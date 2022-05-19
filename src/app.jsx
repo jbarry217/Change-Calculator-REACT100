@@ -52,21 +52,24 @@ class App extends Component {
 
       var pennies = Math.floor(remainder / .01);
 
+      const element = document.getElementById('output');
       if(changeDue >= 1){
         this.setState({output: `The total change due is $${changeDue}`})
+        element.classList.remove('alert-danger');
+        element.classList.add('alert-success');
       } else if (changeDue < 0) {
-        this.setState({output: `Addition money owed`})
+        this.setState({ output: `$${Math.abs(changeDue)} of additional money is owed.` });
+        element.classList.add('alert-danger');
+        element.classList.remove('alert-success');
       } else {
         this.setState({output: `No change due`})
+        element.classList.remove('alert-danger');
+        element.classList.add('alert-success');
       }
 
       this.setState({twenties: twenties, tens: tens, fives: fives, ones: ones, quarters: quarters, dimes: dimes, nickels: nickels, pennies: pennies})
     }
-
-
-  
     
-
   render() {
     return(
       <div className="container" id="container">
@@ -79,40 +82,45 @@ class App extends Component {
                 <div id="panel">
 
                   {/* INPUTS */}
-                  <label htmlFor="amountDue">How much is due?</label>
-                  <br/>
-                    <input name="amountDue" type="number" id="amountDue" defaultValue={this.state.amountDue} onChange= {this.handleChange}/>
-                  <br/>
-                  <label htmlFor
-                  ="amountReceived">How much was receieved?</label>
-                  <br/>
-                    <input name="amountReceived" type="number" id="amountReceived" defaultValue={this.state.amountReceived} onChange= {this.handleChange}/> 
-                  <br/>
-                  <button 
-                    className="btn btn-primary"
-                    type="button"
-                    name="submit" 
-                    id="submit"
-                    onClick= {() => this.calculateChange()}>
-                    Calculate
-                  </button>
-                </div>
+                  <div class="input-group input-group-lg">
+                    <label htmlFor="amountDue" className=".col-lg-*">How much is due?</label>
+                    <br/>
+                      <input name="amountDue" className="input-boxes" type="number" id="amountDue" defaultValue={this.state.amountDue} onChange= {this.handleChange}/>
+                    <br/>
+                    <label htmlFor="amountReceived" className=".col-lg-*">How much was receieved?</label>
+                    <br/>
+                    <input name="amountReceived" className="input-boxes" type="number" id="amountReceived" defaultValue={this.state.amountReceived} onChange= {this.handleChange}/> 
+                    <br/>
+                    </div>
+                    </div>
+                    </div>
+                    <div className="panel-footer">
+                    <button 
+                      className="btn btn-primary btn-block"
+                      type="button"
+                      name="submit" 
+                      id="submit"
+                      onClick= {() => this.calculateChange()}>
+                      Calculate
+                    </button>
+                    </div>
               </div>
-              </div>
-          </div>
+        </div>
 
           {/* OUTPUTS */}
           <div className="col-sm-8">
             <div className="panel panel-default">
               <div className="panel-body">
                 <div id="panel">
-                  <div id="output" className="alert alert-success" name="output" onClick={this.calculateChange}>{this.state.output}</div>
+                  <div id="output" className="outcomeAlerts alert mt-3" role="alert" name="output" onClick={this.calculateChange}>{this.state.output}</div>
 
                   {/* GRID FOR CHANGE DUE */}
-                  <div className="row">
-                    <div className="col-lg-3 text-center card card-body">
+                  <div class="row row-cols-1 row-cols-md-4 g-4">
+                    <div className="col">
+                    <div className="col-text-center card card-body">
                       <label>Twenties</label>
                         <p className= "change">{this.state.twenties}</p>
+                    </div>
                     </div>
                     <div className="col-lg-3 text-center card card-body">   
                       <label>Tens</label>
@@ -126,7 +134,7 @@ class App extends Component {
                         <label>Ones</label>
                         <p className= "change">{this.state.ones}</p>
                     </div>
-
+                    </div>
                   <div className="row">
                     <div className="col-lg-3 text-center card card-body">
                       <label>Quarters</label>
@@ -146,13 +154,12 @@ class App extends Component {
                     </div>
                     </div>
                   </div>
+                  </div>
 
                 </div>
               </div>
             </div>
-          </div>
 
-        </div>
       </div>
     )
   }
