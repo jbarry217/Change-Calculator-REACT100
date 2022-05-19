@@ -72,17 +72,17 @@ class App extends Component {
     
   render() {
     return(
-      <div className="container" id="container">
+      <div className="container mt-4">
         <h1>Change Calculator</h1>
         <div className="row">
-          <div className="col-sm-4">
-            <div className="panel panel-default">
-              <div className="panel-heading">Enter Information</div>
-              <div className="panel-body">
-                <div id="panel">
+          <div className="col-4">
+            <div className="card">
+              <div className="card-body">
+                <div className="card-title">Enter Information</div>
+                  <div className="card-text">
 
                   {/* INPUTS */}
-                  <div class="input-group input-group-lg">
+                  <div class="input-group input-lg">
                     <label htmlFor="amountDue" className=".col-lg-*">How much is due?</label>
                     <br/>
                       <input name="amountDue" className="input-boxes" type="number" id="amountDue" defaultValue={this.state.amountDue} onChange= {this.handleChange}/>
@@ -94,7 +94,7 @@ class App extends Component {
                     </div>
                     </div>
                     </div>
-                    <div className="panel-footer">
+                    <div className="card-footer">
                     <button 
                       className="btn btn-primary btn-block"
                       type="button"
@@ -104,62 +104,88 @@ class App extends Component {
                       Calculate
                     </button>
                     </div>
-              </div>
-        </div>
+            </div>
+            </div>
 
           {/* OUTPUTS */}
-          <div className="col-sm-8">
-            <div className="panel panel-default">
-              <div className="panel-body">
-                <div id="panel">
+          <div className="col-8">
+            <div className="card text-center">
+              <div className="card-body bg-light mb-3">
+                <div className="card-title">
                   <div id="output" className="outcomeAlerts alert mt-3" role="alert" name="output" onClick={this.calculateChange}>{this.state.output}</div>
 
                   {/* GRID FOR CHANGE DUE */}
-                  <div class="row row-cols-1 row-cols-md-4 g-4">
-                    <div className="col">
-                    <div className="col-text-center card card-body">
-                      <label>Twenties</label>
-                        <p className= "change">{this.state.twenties}</p>
-                    </div>
-                    </div>
-                    <div className="col-lg-3 text-center card card-body">   
-                      <label>Tens</label>
-                      <p className= "change">{this.state.tens}</p>
-                    </div>
-                    <div className="col-lg-3 text-center card card-body">
-                      <label>Fives</label>
-                      <p className= "change">{this.state.fives}</p>
-                    </div>
-                    <div className="col-lg-3 text-center card card-body">
-                        <label>Ones</label>
-                        <p className= "change">{this.state.ones}</p>
-                    </div>
-                    </div>
                   <div className="row">
-                    <div className="col-lg-3 text-center card card-body">
-                      <label>Quarters</label>
-                      <p className= "change">{this.state.quarters}</p>
+                  <div className="col-sm-3">
+                    <div className="card">
+                        <div className="card-body bg-light mb-3">
+                          <label>Twenties</label>
+                          <p className="change" class="card-text text-center">{this.state.twenties}</p>
+                          </div>
+                      </div>
                     </div>
-                    <div className="col-lg-3 text-center card card-body">   
-                      <label>Dimes</label>
-                      <p className= "change">{this.state.dimes}</p>
+                    <div className="col-sm-3">
+                      <div className="card">
+                        <div className="card-body bg-light mb-3">
+                          <label>Tens</label>
+                          <p className= "change" class="card-text text-center">{this.state.tens}</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="col-lg-3 text-center card card-body">
-                      <label>Nickels</label>
-                        <p className= "change">{this.state.nickels}</p>  
+                    <div className="col-sm-3">
+                      <div className="card">
+                        <div className="card-body bg-light mb-3">  
+                          <label>Fives</label>
+                          <p className= "change" class="card-text text-center">{this.state.fives}</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="col-lg-3 text-center card card-body">
-                      <label>Pennies</label>
-                      <p className= "change">{this.state.pennies}</p>
+                    <div className="col-sm-3">
+                     <div className="card">
+                        <div className="card-body bg-light mb-3"> 
+                          <label>Ones</label>
+                          <p className= "change" class="card-text text-center">{this.state.ones}</p>
+                        </div>
+                      </div>
                     </div>
+                    <div className="col-sm-3">
+                      <div className="card">
+                        <div className="card-body bg-light mb-3">  
+                          <label>Quarters</label>
+                          <p className= "change" class="card-text text-center">{this.state.quarters}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-sm-3">
+                      <div className="card">
+                        <div className="card-body bg-light mb-3"> 
+                          <label>Dimes</label>
+                          <p className= "change" class="card-text text-center">{this.state.dimes}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-sm-3">
+                      <div className="card">
+                        <div className="card-body bg-light mb-3">
+                          <label>Nickels</label>
+                          <p className= "change" class="card-text text-center">{this.state.nickels}</p> 
+                        </div>
+                      </div> 
+                    </div>
+                    <div className="col-sm-3">
+                      <div className="card">
+                        <div className="card-body bg-light mb-3"> 
+                          <label>Pennies</label>
+                          <p className= "change" class="card-text text-center">{this.state.pennies}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  </div>
-
                 </div>
               </div>
             </div>
-
+          </div>
+        </div>
       </div>
     )
   }
