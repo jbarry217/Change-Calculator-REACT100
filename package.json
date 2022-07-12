@@ -59,5 +59,10 @@
     "type": "git",
     "url": "https://github.com/origincodeacademy/startnow-react100-change-calculator.git"
   },
-  "license": "MIT"
+  "license": "MIT", 
+  
+  "engines": {
+    "node": "14.18.1",
+    "npm": "6.14.15"
+  }
 }
